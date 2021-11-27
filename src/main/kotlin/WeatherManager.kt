@@ -13,8 +13,8 @@ class WeatherManager(val city: String) {
     var windSpeed: Int = 0
     var icon: String = ""
 
-    fun getWeather() {
-        val jsonObject: JSONObject = getJSONFromUrl(String.format(URL, city))
+    fun getWeather(units: String) {
+        val jsonObject: JSONObject = getJSONFromUrl(String.format(URL, city, units))
         var jsonPart: JSONObject = jsonObject.getJSONObject("main")
         this.temp = jsonPart.getInt("temp")
         this.feelsLike = jsonPart.getInt("feels_like")

@@ -7,8 +7,7 @@ import java.net.UnknownHostException
 import kotlin.math.floor
 
 const val URL = "https://api.openweathermap.org/data/2.5/weather?q=%s&appid=0f21bd02afdc24c032045afd167ff588" +
-        "&units=metric&lang=ru"
-const val CELSIUS_UNIT = "°С"
+        "&units=%s&lang=ru"
 const val HUMIDITY_UNIT = "%%"
 const val PRESSURE_UNIT = "мм рт. ст."
 const val SPEED_UNIT = "м/c"

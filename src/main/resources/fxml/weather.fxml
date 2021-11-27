@@ -1,139 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0"
-            prefWidth="526.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Controller">
-   <ImageView fx:id="weather_icon" fitHeight="128.0" fitWidth="128.0" layoutX="59.0" layoutY="142.0" pickOnBounds="true"
-              preserveRatio="true" scaleX="1.1" scaleY="1.1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="526.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <ImageView fx:id="weather_icon" fitHeight="128.0" fitWidth="128.0" layoutX="59.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true" scaleX="1.1" scaleY="1.1">
    </ImageView>
-   <Text fx:id="temp_text" layoutX="15.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER"
-         wrappingWidth="215.0">
+   <Text fx:id="temp_text" layoutX="15.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="215.0">
       <font>
-         <Font name="System Bold" size="18.0"/>
+         <Font name="System Bold" size="18.0" />
       </font>
    </Text>
-   <Text fx:id="weather_status" layoutX="16.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0"
-         textAlignment="CENTER" wrappingWidth="215.0" AnchorPane.rightAnchor="295.0">
+   <Text fx:id="weather_status" layoutX="16.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="215.0" AnchorPane.rightAnchor="295.0">
       <font>
-         <Font size="16.0"/>
+         <Font size="16.0" />
       </font>
    </Text>
-   <Text fx:id="town_id" layoutX="15.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0"
-         textAlignment="CENTER" wrappingWidth="215.0">
+   <Text fx:id="town_id" layoutX="15.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="215.0">
       <font>
-         <Font name="System Bold" size="22.0"/>
+         <Font name="System Bold" size="22.0" />
       </font>
    </Text>
-   <TextField fx:id="town_textField" alignment="CENTER" layoutX="284.0" layoutY="298.0" prefHeight="26.0"
-              prefWidth="184.0" promptText="Город"/>
-   <Button fx:id="find_button" layoutX="351.0" layoutY="335.0" mnemonicParsing="false" text="Поиск"/>
+   <TextField fx:id="town_textField" alignment="CENTER" layoutX="284.0" layoutY="298.0" prefHeight="26.0" prefWidth="184.0" promptText="Город" />
+   <Button fx:id="find_button" layoutX="286.0" layoutY="335.0" mnemonicParsing="false" text="Поиск" />
    <AnchorPane prefHeight="50.0" prefWidth="526.0" style="-fx-background-color: #333;">
       <Text fill="WHITE" layoutX="193.0" layoutY="35.0" stroke="WHITE" strokeWidth="2.0" text="Weather App">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
       </Text>
    </AnchorPane>
-   <Text fill="#100030" layoutX="247.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cкорость ветра:"
-         AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="236.892578125">
+   <Text fill="#100030" layoutX="247.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cкорость ветра:" AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="236.892578125">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fill="#100030" layoutX="247.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Направление ветра:"
-         AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="216.892578125">
+   <Text fill="#100030" layoutX="247.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Направление ветра:" AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="216.892578125">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fill="#100030" layoutX="247.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Температура:"
-         AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="86.892578125">
+   <Text fill="#100030" layoutX="247.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Температура:" AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="86.892578125">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fill="#100030" layoutX="247.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ощущается:"
-         AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="106.892578125">
+   <Text fill="#100030" layoutX="247.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ощущается:" AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="106.892578125">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fill="#100030" layoutX="247.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Минимальная:"
-         AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="146.892578125">
+   <Text fill="#100030" layoutX="247.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Минимальная:" AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="146.892578125">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fill="#100030" layoutX="247.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Максимальная:"
-         AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="126.892578125">
+   <Text fill="#100030" layoutX="247.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Максимальная:" AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="126.892578125">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fill="#100030" layoutX="247.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Давление:"
-         AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="186.892578125">
+   <Text fill="#100030" layoutX="247.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Давление:" AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="186.892578125">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fill="#100030" layoutX="247.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Влажность:"
-         AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="166.892578125">
+   <Text fill="#100030" layoutX="247.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Влажность:" AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="166.892578125">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fx:id="temp_add" layoutX="386.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER"
-         wrappingWidth="128.8505859375" AnchorPane.topAnchor="86.8">
+   <Text fx:id="temp_add" layoutX="386.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="128.8505859375" AnchorPane.topAnchor="86.8">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fx:id="feels_like" layoutX="386.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0"
-         textAlignment="CENTER" wrappingWidth="128.8505859375" AnchorPane.leftAnchor="386.0"
-         AnchorPane.topAnchor="106.8">
+   <Text fx:id="feels_like" layoutX="386.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="128.8505859375" AnchorPane.leftAnchor="386.0" AnchorPane.topAnchor="106.8">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fx:id="max_temp" layoutX="386.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER"
-         wrappingWidth="128.8505859375" AnchorPane.leftAnchor="386.0" AnchorPane.topAnchor="126.8">
+   <Text fx:id="max_temp" layoutX="386.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="128.8505859375" AnchorPane.leftAnchor="386.0" AnchorPane.topAnchor="126.8">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fx:id="min_temp" layoutX="386.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER"
-         wrappingWidth="128.8505859375" AnchorPane.topAnchor="146.8">
+   <Text fx:id="min_temp" layoutX="386.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="128.8505859375" AnchorPane.topAnchor="146.8">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fx:id="humidity" layoutX="386.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER"
-         wrappingWidth="128.8505859375" AnchorPane.topAnchor="166.8">
+   <Text fx:id="humidity" layoutX="386.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="128.8505859375" AnchorPane.topAnchor="166.8">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fx:id="pressure" layoutX="386.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER"
-         wrappingWidth="128.8505859375" AnchorPane.topAnchor="186.8">
+   <Text fx:id="pressure" layoutX="386.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="128.8505859375" AnchorPane.topAnchor="186.8">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fx:id="wind_speed" layoutX="386.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0"
-         textAlignment="CENTER" wrappingWidth="128.8505859375" AnchorPane.topAnchor="216.8">
+   <Text fx:id="wind_speed" layoutX="386.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="128.8505859375" AnchorPane.topAnchor="216.8">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
-   <Text fx:id="wind_deg" layoutX="386.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER"
-         wrappingWidth="128.8505859375" AnchorPane.topAnchor="236.8">
+   <Text fx:id="wind_deg" layoutX="386.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="128.8505859375" AnchorPane.topAnchor="236.8">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Text>
+   <ChoiceBox fx:id="units_box" layoutX="349.0" layoutY="335.0" prefHeight="26.0" prefWidth="117.0" value="Цельсий">
+           <items>
+              <FXCollections fx:factory="observableArrayList">
+                 <String fx:value="Цельсий" />
+                 <String fx:value="Фаренгейт" />
+                 <String fx:value="Кельвин" />
+              </FXCollections>
+           </items>
+   </ChoiceBox>
 </AnchorPane>
