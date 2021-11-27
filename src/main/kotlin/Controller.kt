@@ -1,10 +1,7 @@
 import javafx.fxml.FXML
 import javafx.fxml.Initializable
-import javafx.scene.control.Alert
+import javafx.scene.control.*
 import javafx.scene.control.Alert.AlertType
-import javafx.scene.control.Button
-import javafx.scene.control.ButtonType
-import javafx.scene.control.TextField
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.text.Text
@@ -17,6 +14,7 @@ import java.util.*
 class Controller : Initializable {
     private lateinit var cityName: String
     private lateinit var weatherManager: WeatherManager
+    private lateinit var unitsType: Units
 
     @FXML
     private lateinit var feels_like: Text
@@ -60,6 +58,9 @@ class Controller : Initializable {
     @FXML
     private lateinit var wind_speed: Text
 
+    @FXML
+    private lateinit var units_box: ChoiceBox<String>
+
     override fun initialize(location: URL?, resources: ResourceBundle?) {
         this.cityName = DEFAULT_CITY
         weather_icon.image = Image(javaClass.getResource(String.format(ICON_PATH, "unknown"))?.toExternalForm())
@@ -70,14 +71,14 @@ class Controller : Initializable {
                 Alert(AlertType.ERROR,
                     EMPTY_ERROR_MSG,
                     ButtonType.OK).show()
-
             else buttonPressed(town_textField.text)
         }
     }
 
     private fun weatherUpdate() {
+        checkUnitType(units_box.value)
         try {
-            weatherManager.getWeather()
+            weatherManager.getWeather(unitsType.units)
         } catch (e: FileNotFoundException) {
             Alert(AlertType.ERROR,
                 CITY_ERROR_MSG,
@@ -89,18 +90,15 @@ class Controller : Initializable {
                 ButtonType.OK).show()
             return
         }
-        town_id.text = weatherManager.city
-        max_temp.text = String.format("%s $CELSIUS_UNIT", weatherManager.maxTemp.toString())
-        min_temp.text = String.format("%s $CELSIUS_UNIT", weatherManager.minTemp.toString())
-        feels_like.text = String.format("%s $CELSIUS_UNIT", weatherManager.feelsLike.toString())
-        humidity.text = String.format("%s $HUMIDITY_UNIT", weatherManager.humidity.toString())
-        pressure.text = String.format("%s $PRESSURE_UNIT", weatherManager.pressure.toString())
-        temp_text.text = String.format("%s $CELSIUS_UNIT", weatherManager.temp.toString())
-        temp_add.text = String.format("%s $CELSIUS_UNIT", weatherManager.temp.toString())
-        weather_status.text = weatherManager.weather.replaceFirstChar { it.uppercaseChar() }
-        weather_icon.image = Image(getIcon(weatherManager.icon))
-        wind_deg.text = getWindDirection(weatherManager.deg)
-        wind_speed.text = String.format("%s $SPEED_UNIT", weatherManager.windSpeed.toString())
+        update()
+    }
+
+    private fun checkUnitType(value: String) {
+        when(value) {
+            "Цельсий" -> this.unitsType = Units.CELSIUS
+            "Фаренгейт" -> this.unitsType = Units.FAHRENHEIT
+            "Кельвин" -> this.unitsType = Units.KELVIN
+        }
     }
 
     private fun buttonPressed(str: String) {
@@ -108,5 +106,20 @@ class Controller : Initializable {
         this.cityName = name
         weatherManager = WeatherManager(cityName)
         weatherUpdate()
+    }
+
+    private fun update() {
+        town_id.text = weatherManager.city
+        max_temp.text = String.format("%s ${unitsType.text}", weatherManager.maxTemp.toString())
+        min_temp.text = String.format("%s ${unitsType.text}", weatherManager.minTemp.toString())
+        feels_like.text = String.format("%s ${unitsType.text}", weatherManager.feelsLike.toString())
+        humidity.text = String.format("%s $HUMIDITY_UNIT", weatherManager.humidity.toString())
+        pressure.text = String.format("%s $PRESSURE_UNIT", weatherManager.pressure.toString())
+        temp_text.text = String.format("%s ${unitsType.text}", weatherManager.temp.toString())
+        temp_add.text = String.format("%s ${unitsType.text}", weatherManager.temp.toString())
+        weather_status.text = weatherManager.weather.replaceFirstChar { it.uppercaseChar() }
+        weather_icon.image = Image(getIcon(weatherManager.icon))
+        wind_deg.text = getWindDirection(weatherManager.deg)
+        wind_speed.text = String.format("%s $SPEED_UNIT", weatherManager.windSpeed.toString())
     }
 }
