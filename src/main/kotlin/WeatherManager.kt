@@ -14,12 +14,7 @@ class WeatherManager(val city: String) {
     var icon: String = ""
 
     fun getWeather() {
-        val jsonObject: JSONObject
-        try {
-            jsonObject = getJSONFromUrl(String.format(URL, city))
-        } catch (e: IllegalArgumentException) {
-            return
-        }
+        val jsonObject: JSONObject = getJSONFromUrl(String.format(URL, city))
         var jsonPart: JSONObject = jsonObject.getJSONObject("main")
         this.temp = jsonPart.getInt("temp")
         this.feelsLike = jsonPart.getInt("feels_like")
@@ -34,5 +29,4 @@ class WeatherManager(val city: String) {
         this.weather = jsonPart.getString("description")
         this.icon = jsonPart.getString("icon")
     }
-
 }

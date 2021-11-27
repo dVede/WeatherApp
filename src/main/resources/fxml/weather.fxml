@@ -23,7 +23,7 @@
          <Font size="16.0"/>
       </font>
    </Text>
-   <Text fx:id="town_id" layoutX="15.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Москва"
+   <Text fx:id="town_id" layoutX="15.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0"
          textAlignment="CENTER" wrappingWidth="215.0">
       <font>
          <Font name="System Bold" size="22.0"/>
